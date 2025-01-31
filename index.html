@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiny Doses </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Georgia, 
@@ -17,8 +19,7 @@
             font-size: 35pt;
        }
         h2 {
-            text-align: center;
-            border-bottom: 2px solid black;
+            text-align: center;;
         }
         h3 {
             font-size: 15pt;
@@ -32,13 +33,22 @@
         }
 
         .container {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
+            max-width: 900px;
+            margin: 10px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
         .section {
-            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
         }
+        .spacer {
+            height: 30px;
+        }
+    
         label {
             display: block;
             margin: 10px 0 5px;
@@ -46,6 +56,7 @@
         input, select, button {
             padding: 10px;
             font-size: 16px;
+            font-family: georgia;
             margin-bottom: 15px;
             width: 100%;
             box-sizing: border-box;
@@ -56,13 +67,22 @@
         }
         .summary {
             margin-top: 10px;
+            font-family: Georgia;
+        }
+        .pill-icon {
+            color: black; /* Makes it black */
+            font-size: 40px; /* Adjust size */
+            opacity: 0.8; /* Slight transparency for a softer look */
         }
     </style>
 </head>
 <body>
+    <h1 class="title">
+        <i class="fa-solid fa-capsules pill-icon"></i> Tiny Doses <i class="fa-solid fa-capsules pill-icon"></i>
+    </h1>
+    <h2> An OTC Medication Hub for Parents </h2> <br>
     <div class="container">
-        <h1><span class="text-3xl text-red-500">💊</span> Tiny Doses</span class="text-3xl text-red-500">💊</span> </h1>
-        <h2> An OTC Medication Hub for Parents </h2> <br>
+        
 
         <div class="section">
             <h3>Dosing Calculator:</h2>
@@ -80,18 +100,24 @@
                     <option value="bismuth_subsalicylate">Bismuth Subsalicylate (Pepto Bismol)</option>
                     <option value="calcium_carbonate">Calcium Carbonate (Tums)</option>
                     <option value="cetirizine">Cetirizine (Zyrtec)</option>
+                    <option value="chlorpheniramine">Chlorpheniramine (Chlorphen)</option>
                     <option value="dextromethorphan">Dextromethorphan (Delsym)</option>
-                    <option value="diphenhydramine">Diphenhydramine (Benadryl)</option>
+                    <option value="dimenhydrinate">Dimenhydrinate (Dramamine)</option>
+                    <option value="diphenhydramine">Diphenhydramine Oral (Benadryl)</option>
+                    <option value="dpcream">Diphenhydramine Cream (Benadryl Itch Relief)</option>
                     <option value="fexofenadine">Fexofenadine (Allegra)</option>
                     <option value="guaifenesin">Guaifenesin (Mucinex)</option>
                     <option value="hydrocortisone">Hydrocortisone Cream (Cortizone)</option>
                     <option value="ibuprofen">Ibuprofen (Advil/Motrin)</option>
+                    <option value="loperamide">Loperamide (Imodium)</option>
                     <option value="loratadine">Loratadine (Claritin)</option>
+                    <option value="meclizine">Meclizine (Bonine)</option>
                     <option value="melatonin">Melatonin</option>
                     <option value="naproxen">Naproxen (Aleve)</option>
                     <option value="peg">Polyethylene Glycol 3350 (Miralax)</option>
-                    <option value="saline_nasal">Saline Nasal Drops/Spray (Ayr)</option>
-                    <option value="simethicone">Simethicone (Mylicon, Gas-X)</option>
+                    <option value="sudafed">Pseudoephedrine (Sudafed)</option>
+                    <option value="saline_nasal">Saline Nasal Drops/Spray (Little Remedies/Ayr)</option>
+                    <option value="simethicone">Simethicone (Mylicon/Gas-X)</option>
                     <option value="vitamin_d">Vitamin D Supplement</option>
                 </select>
 
@@ -100,7 +126,39 @@
                 <div id="doseResult" class="summary"></div>
             </form>
         </div>
+     </div>
+    <div class= "spacer"></div>
 
+    <div class="container">
+        <!-- Symptom Search Section -->
+            <div class="section">
+                <h3>Search by Symptom</h3>
+                <label for="symptomSearch">Select a Symptom:</label>
+                <select id="symptomSearch" onchange="showSymptomMeds()">
+                    <option value="">--Select--</option>
+                     <option value="allergies">Allergies</option>
+                    <option value="congestion">Congestion</option>
+                    <option value="constipation">Constipation</option>
+                    <option value="dcough">Cough (Dry)</option>
+                    <option value="wcough">Cough (Wet)</option>
+                    <option value="diarrhea">Diarrhea</option>
+                    <option value="fever">Fever</option>
+                    <option value="heartburn">Heartburn</option>
+                    <option value="inflammation">Inflammation </option>
+                    <option value="insomnia">Insomnia</option>
+                    <option value="itching">Itching</option>
+                    <option value="motion">Motion Sickness</option>
+                    <option value="pain">Pain</option>
+                    <option value="stomachupset">Stomach Upset</option>
+                </select>
+                <div id="symptomResult" class="summary"></div>
+            </div>
+        </div>
+
+        <!-- Space Before Drug Summary -->
+    <div class="spacer"></div>
+
+    <div class="container">
         <div class="section">
             <h4>Drug Summaries:</h2>
             <label for="drugSummary">Select Medication</label>
@@ -111,18 +169,24 @@
                 <option value="bismuth_subsalicylate">Bismuth Subsalicylate (Pepto Bismol)</option>
                 <option value="calcium_carbonate">Calcium Carbonate (Tums)</option>
                 <option value="cetirizine">Cetirizine (Zyrtec)</option>
+                <option value="chlorpheniramine">Chlorpheniramine (Chlorphen)</option>
                 <option value="dextromethorphan">Dextromethorphan (Delsym)</option>
-                <option value="diphenhydramine">Diphenhydramine (Benadryl)</option>
+                <option value="dimenhydrinate">Dimenhydrinate (Dramamine)</option>
+                <option value="diphenhydramine">Diphenhydramine Oral (Benadryl)</option>
+                <option value="dpcream">Diphenhydramine Cream (Benadryl Itch Relief)</option>
                 <option value="fexofenadine">Fexofenadine (Allegra)</option>
                 <option value="guaifenesin">Guaifenesin (Mucinex)</option>
                 <option value="hydrocortisone">Hydrocortisone Cream (Cortizone)</option>
                 <option value="ibuprofen">Ibuprofen (Advil/Motrin)</option>
+                <option value="loperamide">Loperamide (Imodium)</option>
                 <option value="loratadine">Loratadine (Claritin)</option>
+                <option value="meclizine">Meclizine (Bonine)</option>
                 <option value="melatonin">Melatonin</option>
                 <option value="naproxen">Naproxen (Aleve)</option>
                 <option value="peg">Polyethylene Glycol 3350 (Miralax)</option>
-                <option value="saline_nasal">Saline Nasal Drops/Spray (Ayr)</option>
-                <option value="simethicone">Simethicone (Mylicon, Gas-X)</option>
+                <option value="sudafed">Pseudoephedrine (Sudafed)</option>
+                <option value="saline_nasal">Saline Nasal Drops/Spray (Little Remedies/Ayr)</option>
+                <option value="simethicone">Simethicone (Mylicon/Gas-X)</option>
                 <option value="vitamin_d">Vitamin D Supplement</option>
             </select>
 
@@ -136,7 +200,7 @@
                 dose: "weight-based = weight (kg) x 10mg",
                 summary: `
                     <b>Uses:</b> Fever, Pain Relief <br>
-                    <b>Dose and Frequency:</b> 10-15mg/kg by mouth every 4-6 hours. Not to exceed 5 doses per day. Max daily dose 4000mg/day.<br>
+                    <b>Dose and Frequency:</b> 10-15 mg/kg by mouth every 4-6 hours. Not to exceed 5 doses per day. Max daily dose 4000 mg/day.<br>
                     <b>Common Side Effects:</b> Nausea, stomach upset, headache.
                 `
             },
@@ -145,18 +209,18 @@
                 summary: `
                     <b>Uses:</b> Constipation <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 6- <10 years-old: 5mg by mouth once daily. <br>
-                    - 10 - <12 years-old: 5-10mg by mouth once daily. <br>
-                    - 12+ years-old: 5-15mg by mouth once daily. <br>
+                    - 6- <10 years-old: 5 mg by mouth once daily. <br>
+                    - 10 - <12 years-old: 5-10 mg by mouth once daily. <br>
+                    - 12+ years-old: 5-15 mg by mouth once daily. <br>
                     <b>Common Side Effects:</b> Drowsiness, dry mouth, headache, stomach upset.<br>
                     <span class="disclaimer">Disclaimer: Polyethylene Glycol 3350 (Miralax) is the preferred OTC medication for constipation in children. Consult doctor prior to use. Child must be able to swallow tablet whole, it may not be crushed or split. </span>
                 `
             },
             bismuth_subsalicylate: {
-                dose: "age-based ≥12 years = 524mg every 30-60 minutes or 1,050mg every 60 minutes as needed for up to 2 days",
+                dose: "age-based ≥12 years = 524 mg every 30-60 minutes or 1,050 mg every 60 minutes as needed for up to 2 days",
                 summary: `
                     <b>Uses:</b> Diarrhea, Stomach Upset, Nausea <br>
-                    <b>Dose and Frequency:</b> ≥12 years = 524mg every 30-60 minutes or 1,050mg every 60 minutes as needed for up to 2 days. Max daily dose of 4,200mg/day.<br>
+                    <b>Dose and Frequency:</b> ≥12 years = 524 mg every 30-60 minutes or 1,050 mg every 60 minutes as needed for up to 2 days. Max daily dose of 4,200 mg/day.<br>
                     <b>Common Side Effects:</b> Constipation, dark mouth, dark stool.
                 `
             },
@@ -166,9 +230,9 @@
                 summary: `
                     <b>Uses:</b> Heartburn <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 2-5 years and >10.9kg: 400mg as symptoms occur for up to 2 weeks. Max daily dose of 1,200mg/day.<br>
-                    - 6-11 years: 800mg as symptoms occur for up to 2 weeks. Max daily dose of 2,400mg/day.<br>
-                    - ≥12 years: 1000mg-3000mg as symptoms occur for up to 2 weeks. Max daily dose of 7,500mg/day.<br>
+                    - 2-5 years and >10.9kg: 400 mg as symptoms occur for up to 2 weeks. Max daily dose of 1,200 mg/day.<br>
+                    - 6-11 years: 800 mg as symptoms occur for up to 2 weeks. Max daily dose of 2,400 mg/day.<br>
+                    - ≥12 years: 1000 mg-3000 mg as symptoms occur for up to 2 weeks. Max daily dose of 7,500 mg/day.<br>
                     <b>Common Side Effects:</b> Constipation.<br>
                     <span class="disclaimer">Disclaimer: Chronic antacid therapy is not recommended to manage reflux disease in children.</span>
                 `
@@ -178,9 +242,23 @@
                 summary: `
                     <b>Uses:</b> Allergies, Congestion <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 2-5 years: 2.5-5mg by mouth once daily.Max daily dose of 5mg/day. <br>
-                    - 6+ years: 5-10mg by mouth once daily. Max daily dose of 10mg/day. <br>
+                    - 2-5 years: 2.5-5 mg by mouth once daily.Max daily dose of 5 mg/day. <br>
+                    - 6+ years: 5-10 mg by mouth once daily. Max daily dose of 10 mg/day. <br>
                     <b>Common Side Effects:</b> Drowsiness, dry mouth, headache, stomach upset.<br>
+                `
+            },
+            chlorpheniramine: {
+                dose: `2-5 years=6.25 mg every 4-8 hours as needed. <br>
+                       6-11 years=12.5-25 mg every 4-8 hours as needed. <br>
+                       ≥12 years=25-50 mg every 4-8 hours as needed.<br>
+                       <span class="disclaimer">Disclaimer: Diphenhydramine (Benadryl) is not a preferred medication for children due to its side effects. Cetirizine (Zyrtec), Fexofenadine (Allegra), and Loratadine (Claritin) are preferred agents for allergy symptoms.</span>`,
+                summary: `
+                    <b>Uses:</b> Allergies <br>
+                    <b>Dose and Frequency:</b> <br>
+                    - 6-11 years: 2 mg every 4-6 hours as needed. Max daily dose of 12 mg/day.<br>
+                    - 12+ years: 4 mg every 4-6 hours as needed. Max daily dose of 24 mg/day. <br>
+                    <b>Common Side Effects:</b> Drowsiness, dizziness, nervousness or excitability.<br>
+                    <span class="disclaimer">Disclaimer: Chlopheniramine (Chlorphen) is not a preferred medication for children due to its side effects. Cetirizine (Zyrtec), Fexofenadine (Allegra), and Loratadine (Claritin) are preferred agents for allergy symptoms.</span>
                 `
             },
             dextromethorphan: {
@@ -190,26 +268,47 @@
                 summary: `
                     <b>Uses:</b> Cough Suppression <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 2-5 years: 5mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
-                    - 6-11 years: 10mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
-                    - ≥12 years: 20mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
+                    - 2-5 years: 5 mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
+                    - 6-11 years: 10 mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
+                    - ≥12 years: 20 mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
                     <b>Common Side Effects:</b> Drowsiness, dizziness, upset stomach.<br>
                     <span class="disclaimer">Disclaimer: Cold and flu medications are generally not recommended in children less than 4 years-old.</span>
                 `
             },
+            dimenhydrinate: {
+                dose: "age-based: 2-<6 years = 2.5-5mg, >6 years = 5-10mg",
+                summary: `
+                    <b>Uses:</b> Motion Sickness, Vertigo, Nausea <br>
+                    <b>Dose and Frequency:</b> <br>
+                    - 2-5 years: 12.5-25 mg by mouth every 6-8 hours as needed. Max daily dose of 75 mg/day. <br>
+                    - 6-11 years: 25-50 mg by mouth every 6-8 hours as needed. Max daily dose of 150 mg/day. <br>
+                    - 12+ years: 50-100 mg by mouth every 4-6 hours as needed. Max daily dose of 400 mg/day. <br>
+                    <b>Common Side Effects:</b> Drowsiness, dry mouth, dizziness, stomach upset.<br>
+                `
+            },
             diphenhydramine: {
-                dose: `2-5 years=6.25mg every 4-8 hours as needed. <br>
-                       6-11 years=12.5-25mg every 4-8 hours as needed. <br>
-                       ≥12 years=25-50mg every 4-8 hours as needed.<br>
+                dose: `2-5 years=6.25 mg every 4-8 hours as needed. <br>
+                       6-11 years=12.5-25 mg every 4-8 hours as needed. <br>
+                       ≥12 years=25-50 mg every 4-8 hours as needed.<br>
                        <span class="disclaimer">Disclaimer: Diphenhydramine (Benadryl) is not a preferred medication for children due to its side effects. Cetirizine (Zyrtec), Fexofenadine (Allegra), and Loratadine (Claritin) are preferred agents for allergy symptoms.</span>`,
                 summary: `
                     <b>Uses:</b> Allergies <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 2-5 years: 6.25mg every 4-8 hours as needed.<br>
-                    - 6-11 years: 12.5-25mg every 4-8 hours as needed.<br>
-                    - ≥12 years: 25-50mg every 4-8 hours as needed.<br>
+                    - 2-5 years: 6.25 mg every 4-8 hours as needed.<br>
+                    - 6-11 years: 12.5-25 mg every 4-8 hours as needed.<br>
+                    - ≥12 years: 25-50 mg every 4-8 hours as needed.<br>
                     <b>Common Side Effects:</b> Drowsiness, dry mouth, dizziness.<br>
                     <span class="disclaimer">Disclaimer: Diphenhydramine (Benadryl) is not a preferred medication for children due to its side effects. Cetirizine (Zyrtec), Fexofenadine (Allegra), and Loratadine (Claritin) are preferred agents for allergy symptoms.</span>
+                `
+            },
+            dpcream: {
+                dose: "age-based: <2 years = not indicated, >2 years = apply a thin layer to the affected area 3-4 times daily, do not use for longer than 2 weeks",
+                summary: `
+                    <b>Uses:</b> Itching, Mild Rash, Skin Irritation <br>
+                    <b>Dose and Frequency:</b> <br>
+                    - <2 years: Not indicated, consult a doctor before use. <br>
+                    - 2+ years: Apply a thin layer to the affected area 3-4 times daily.<br>
+                    <b>Common Side Effects:</b> Reddening of skin, skin burning/tingling.<br>
                 `
             },
             fexofenadine: {
@@ -217,21 +316,21 @@
                 summary: `
                     <b>Uses:</b> Allergies, Congestion <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 2-11 years: 30mg by mouth every 12 hours. Max daily dose of 60mg/day. <br>
-                    - 12+ years: 60mg by mouth once daily. Max daily dose of 120mg/day. <br>
+                    - 2-11 years: 30 mg by mouth every 12 hours. Max daily dose of 60 mg/day. <br>
+                    - 12+ years: 60 mg by mouth once daily. Max daily dose of 120 mg/day. <br>
                     <b>Common Side Effects:</b> Headache, nausea.<br>
                 `
             },
             guaifenesin: {
-                dose: `4-<6 years= 50-100mg every 4 hours as needed. Do not exceed 6 doses in 24 hours. <br>
-                       6-<12 years=100-200mg every 4 hours as needed. Do not exceed 6 doses in 24 hours. <br>
-                       ≥12 years=200-400mg every 4 hours as needed. Do not exceed 6 doses in 24 hours.`,
+                dose: `4-<6 years= 50-100 mg every 4 hours as needed. Do not exceed 6 doses in 24 hours. <br>
+                       6-<12 years=100-200 mg every 4 hours as needed. Do not exceed 6 doses in 24 hours. <br>
+                       ≥12 years=200-400 mg every 4 hours as needed. Do not exceed 6 doses in 24 hours.`,
                 summary: `
                     <b>Uses:</b> Cough (Expectorant) <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 4-<6 years: 50-100mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
-                    - 6-<12 years: 100-200mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
-                    - ≥12 years: 200-400mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
+                    - 4-<6 years: 50-100 mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
+                    - 6-<12 years: 100-200 mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
+                    - ≥12 years: 200-400 mg every 4 hours as needed. Max 6 doses in 24 hours.<br>
                     <b>Common Side Effects:</b> Nausea, vomiting, upset stomach.<br>
                      <span class="disclaimer">Disclaimer: Cold and flu medications are generally not recommended in children less than 4 years-old.</span>
                 `
@@ -250,9 +349,23 @@
                 dose: "weight-based = weight (kg) x 4-10mg",
                 summary: `
                     <b>Uses:</b> Fever, Pain Relief, Inflammation <br>
-                    <b>Dose and Frequency:</b> 4-10mg/kg by mouth every 6-8 hours. Max daily dose of 40mg/kg/day or 2400mg/day, whichever is less.<br>
+                    <b>Dose and Frequency:</b> 4-10 mg/kg by mouth every 6-8 hours. Max daily dose of 40 mg/kg/day or 2400 mg/day, whichever is less.<br>
                     <b>Common Side Effects:</b> Nausea, stomach upset, dizziness.<br>
                     <span class="disclaimer">Disclaimer: Do not use in children < 6 months old.</span>
+                `
+            },
+            loperamide: {
+                dose: "age-based: 2-<6 years = 5mg, ≥6 years = 10mg",
+                summary: `
+                    <b>Uses:</b> Diarrhea <br>
+                    <b>Dose and Frequency:</b> <br>
+                    - <2 years: Loperamide is not indicated for children under 2 years old. <br>
+                    - 13-<21kg: 1 mg with 1st loose stool followed by 1 mg/dose after each subsequent loose stool. Max daily dose of 3 mg/day.<br>
+                    - 21-27kg: 1 mg with 1st loose stool followed by 1 mg/dose after each subsequent loose stool. Max daily dose of 4 mg/day. <br>
+                    - 27.1-43kg: 2 mg with 1st loose stool followed by 1 mg/dose after each subsequent loose stool. Max daily dose of 6 mg/day.<br>
+                    - 12+ years: 4 mg with 1st loose stool followed by 2 mg/dose after each subsequent loose stool. Max daily dose of 8 mg/day.<br>
+                    <b>Common Side Effects:</b> Constipation, dizziness, fatigue.<br>
+                    <span class="disclaimer">Disclaimer: Consult doctor prior to use. Use lowest effective dose for the shortest duration.</span>
                 `
             },
             loratadine: {
@@ -260,9 +373,20 @@
                 summary: `
                     <b>Uses:</b> Allergies, Congestion <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 2-5 years: 5mg by mouth once daily. <br>
-                    - 6+ years: 10mg by mouth once daily. <br>
+                    - 2-5 years: 5 mg by mouth once daily. <br>
+                    - 6+ years: 10 mg by mouth once daily. <br>
                     <b>Common Side Effects:</b> Headache, drowsiness.<br>
+                `
+            },
+            meclizine: {
+                dose: "age-based: ≥5 years = 1-3mg",
+                summary: `
+                    <b>Uses:</b> Motion Sickness, Vertigo <br>
+                    <b>Dose and Frequency:</b> <br>
+                    - <12 years: not indicated.<br>
+                    - 12+ years, for motion sickness: 25-50 mg by mouth 60 minutes before travel.<br>
+                    - 12+ years, for vertigo: 25-100 mg/day by mouth in 3 or 4 divided doses. <br>
+                    <b>Common Side Effects:</b> Drowsiness, dry mouth, headache, nausea.<br>
                 `
             },
             melatonin: {
@@ -270,7 +394,7 @@
                 summary: `
                     <b>Uses:</b> Insomnia <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 5+ years: 1-3mg by mouth 30-60 minutes before bedtime. Titrate up to an effective dose, max daily dose of 10mg/day. <br>
+                    - 5+ years: 1-3 mg by mouth 30-60 minutes before bedtime. Titrate up to an effective dose, max daily dose of 10 mg/day. <br>
                     <b>Common Side Effects:</b> Drowsiness, dizziness.<br>
                     <span class="disclaimer">Disclaimer: Managing coexisting conditions and using behavioral strategies should be done first before giving a child melatonin. </span>
                 `
@@ -280,10 +404,24 @@
                 summary: `
                     <b>Uses:</b> Constipation <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 0.4-0.8g/kg by mouth once daily as needed. Max daily dose of 17g/day.<br>
+                    - 0.4-0.8 g/kg by mouth once daily as needed. Max daily dose of 17 g/day.<br>
                     - 1 capful ~ 17g <br>
                     <b>Common Side Effects:</b> Nausea, stomach upset, diarrhea.<br>
                     <span class="disclaimer">Disclaimer: FDA approved for ages 17+, consult a doctor prior to use.</span>
+                `
+            },
+            sudafed: {
+                dose: `4-<6 years= 15 mg every 4-6 hours as needed. Max daily dose 60mg/day. <br>
+                       6-<12 years=100-200 mg every 4 hours as needed. Do not exceed 6 doses in 24 hours. <br>
+                       ≥12 years=200-400mg every 4 hours as needed. Do not exceed 6 doses in 24 hours.`,
+                summary: `
+                    <b>Uses:</b> Congestion <br>
+                    <b>Dose and Frequency:</b> <br>
+                    - 4-<6 years: 15 mg every 4-6 hours as needed. Max daily dose 60 mg/day.<br>
+                    - 6-<12 years: 30 mg every 4-6 hours as needed. Max daily dose 120 mg/day.<br>
+                    - ≥12 years: 60 mg every 4-6 hours as needed. Max daily dose 240 mg/day.<br>
+                    <b>Common Side Effects:</b> Dizziness, feeling nervous or excitable, insomnia.<br>
+                     <span class="disclaimer">Disclaimer: Cold and flu medications are generally not recommended in children less than 4 years-old.</span>
                 `
             },
             naproxen: {
@@ -291,7 +429,7 @@
                 summary: `
                     <b>Uses:</b> Pain relief, Fever, Inflammation <br>
                     <b>Dose and Frequency:</b> <br>
-                    - 12+ years: 200mg by mouth every 8-12 hours as needed. Max daily dose of 600mg/day.<br>
+                    - 12+ years: 200 mg by mouth every 8-12 hours as needed. Max daily dose of 600 mg/day.<br>
                     <b>Common Side Effects:</b> Stomach upset, nausea, headache.<br>
                     <span class="disclaimer">Disclaimer: Naproxen should generally not be used in children less than 12 years old. </span>
                 `
@@ -311,9 +449,9 @@
                 summary: `
                     <b>Uses:</b> Gas pain, Stomach Upset <br>
                     <b>Dose and Frequency:</b> <br>
-                    - <2 years-old and <10.9kg: 20mg four times daily as needed after meals and at bedtime. Max daily dose of 240mg/day.<br>
-                    - <12 years-old and ≥10.9kg : 40mg four times daily as needed after meals and at bedtime. Max daily dose of 480mg/day.<br>
-                    - ≥12 years: 40-125mg four times a day as needed after meals and at bedtime. Max daily dose of 500mg/day.<br>
+                    - <2 years-old and <10.9kg: 20 mg four times daily as needed after meals and at bedtime. Max daily dose of 240 mg/day.<br>
+                    - <12 years-old and ≥10.9kg : 40 mg four times daily as needed after meals and at bedtime. Max daily dose of 480 mg/day.<br>
+                    - ≥12 years: 40-125 mg four times a day as needed after meals and at bedtime. Max daily dose of 500 mg/day.<br>
                     <b>Common Side Effects:</b> N/A. <br>
 
                 `
@@ -381,15 +519,15 @@
                     break;
                 case "bisacodyl":
                     if (ageYears <6) dose = "Bisacodyl is not recommended for children under 6 years old.";
-                    else if (ageYears >=6 && ageYears <10) dose = `5mg once daily as needed.<br><b> <span style="color: red;"> Consult doctor prior to use. Child must also be able to swallow tablet whole.`; 
-                    else if (ageYears >=10 && ageYears <12) dose = `5-10mg once daily as needed.<br><b> <span style="color: red;"> Consult doctor prior to use. Child must also be able to swallow tablet whole.`;  
-                    else if (ageYears >=12) dose = `5-15mg once daily as needed.<br><b> <span style="color: red;"> Consult doctor prior to use. Child must also be able to swallow tablet whole.`; 
+                    else if (ageYears >=6 && ageYears <10) dose = `5 mg by mouth once daily as needed.<br><b> <span style="color: red;"> Consult doctor prior to use. Child must also be able to swallow tablet whole.`; 
+                    else if (ageYears >=10 && ageYears <12) dose = `5-10 mg by mouth once daily as needed.<br><b> <span style="color: red;"> Consult doctor prior to use. Child must also be able to swallow tablet whole.`;  
+                    else if (ageYears >=12) dose = `5-15 mg by mouth once daily as needed.<br><b> <span style="color: red;"> Consult doctor prior to use. Child must also be able to swallow tablet whole.`; 
                     break; 
                 case "bismuth_subsalicylate":
                     if (ageYears >= 12) {
                         dose = `
-                            524 mg every 30-60 minutes as needed <b>OR</b> 
-                            1050 mg every 60 minutes as needed. 
+                            524 mg by mouth every 30-60 minutes as needed <b>OR</b> 
+                            1050 mg by mouth every 60 minutes as needed. 
                         `;
                     } else {
                         dose = "Bismuth subsalicylate is not indicated for children under 12 years old.";
@@ -400,11 +538,11 @@
                     if (ageYears < 2 || weightKg <= 10.9) {
                         dose = "Calcium carbonate is not indicated for children under 2 years old or those weighing less than 10.9 kg.";
                     } else if (ageYears >= 2 && ageYears < 6 && weightKg > 10.9) {
-                        dose = "400 mg as symptoms occur. Maximum daily dose: 1,200 mg/day.";
+                        dose = "400 mg by mouth as symptoms occur. <br><b><span style=\"color: red;\">Maximum daily dose: 1,200 mg/day";
                     } else if (ageYears >= 6 && ageYears < 12) {
-                        dose = "800 mg as symptoms occur. Maximum daily dose: 2,400 mg/day.";
+                        dose = "800 mg by mouth as symptoms occur. <br><b><span style=\"color: red;\">Maximum daily dose: 2,400 mg/day";
                     } else if (ageYears >= 12) {
-                        dose = "1,000–3,000 mg as symptoms occur. Maximum daily dose: 7,500 mg/day.";
+                        dose = "1,000–3,000 mg by mouth as symptoms occur. <br><b><span style=\"color: red;\">Maximum daily dose: 7,500 mg/day";
                     } else {
                         dose = "Detailed dosing not available for this combination of age and weight.";
                     }
@@ -414,55 +552,78 @@
                     if (ageYears < 2) {
                         dose = "Cetirizine is not indicated for children under 2 years old.";
                     } else if (ageYears >= 2 && ageYears < 6) {
-                        dose = "2.5–5 mg once daily.";
+                        dose = "2.5–5 mg by mouth once daily.";
                     } else if (ageYears >= 6) {
-                        dose = "5–10 mg once daily.";
+                        dose = "5–10 mg by mouth once daily.";
                     } else {
                         dose = "Detailed dosing not available for this combination of inputs.";
                     }
                     document.getElementById("doseResult").innerText = dose;
                     break;
+                 case "chlorpheniramine":
+                    if (ageYears >= 6 && ageYears < 12) dose = "2 mg by mouth every 4-6 hours as needed. <br><b><span style=\"color: red;\">Max 12 mg/day";
+                    else if (ageYears >= 12) dose = "4 mg by mouth every 4-6 hours as needed. <br><b><span style=\"color: red;\">Max 24 mg/day";
+                    else dose = "Not recommended for children under 6 years.";
+                    break;
 
                 case "dextromethorphan":
-                    if (ageYears >= 2 && ageYears < 6) dose = "5 mg every 4 hours (max 6 doses/day).";
-                    else if (ageYears >= 6 && ageYears < 12) dose = "10 mg every 4 hours (max 6 doses/day).";
-                    else if (ageYears >= 12) dose = "20 mg every 4 hours (max 6 doses/day).";
+                    if (ageYears >= 2 && ageYears < 6) dose = "5 mg by mouth every 4 hours as needed. <br><b><span style=\"color: red;\">Max 6 doses/day";
+                    else if (ageYears >= 6 && ageYears < 12) dose = "10 mg by mouth every 4 hours as needed.<br><b><span style=\"color: red;\"> Max 6 doses/day";
+                    else if (ageYears >= 12) dose = "20 mg by mouth every 4 hours as needed. <br><b><span style=\"color: red;\"> Max 6 doses/day";
                     else dose = "Not recommended for children under 2 years.";
                     break;
+                case "dimenhydrinate":
+                    if (ageYears <2) dose = "Dimenhydrinate is not indicated for children under 2 years old.";
+                    else if (ageYears >= 2 && ageYears < 6) dose = "12.5-25 mg by mouth every 6-8 hours as needed. <br><b><span style=\"color: red;\">Max 75 mg/day";
+                    else if (ageYears >= 6 && ageYears < 12) dose = "25-50 mg by mouth every 6-8 hours as needed.<br><b><span style=\"color: red;\"> Max 150 mg/day";
+                    else if (ageYears >= 12) dose = "50-100 mg by mouth every 4-6 hours as needed. <br><b><span style=\"color: red;\"> Max 400 mg/day";
+                    break;
                 case "diphenhydramine":
-                    if (ageYears >= 2 && ageYears < 6) dose = "6.25 mg every 4-8 hours as needed.";
-                    else if (ageYears >= 6 && ageYears < 12) dose = "12.5-25 mg every 4-8 hours as needed.";
-                    else if (ageYears >= 12) dose = "25-50 mg every 4-8 hours as needed.";
+                    if (ageYears >= 2 && ageYears < 6) dose = "6.25 mg by mouth every 4-8 hours as needed.";
+                    else if (ageYears >= 6 && ageYears < 12) dose = "12.5-25 mg by mouth every 4-8 hours as needed.";
+                    else if (ageYears >= 12) dose = "25-50 mg by mouth every 4-8 hours as needed.";
                     else dose = "Not recommended for children under 2 years.";
+                    break;
+                case "dpcream":
+                    if (ageYears <2) dose = "Diphenhydramine cream is not indicated for children under 2 years old, consult a doctor before use.";
+                    else if (ageYears >= 2) dose = "Apply a thin layer to the affected area(s) 3-4 times daily."; 
                     break;
 
                 case "fexofenadine":
                     if (ageYears < 2) {
                         dose = "Fexofenadine is not indicated for children under 2 years old.";
                     } else if (ageYears >= 2 && ageYears < 12) {
-                        dose = "30 mg twice daily.";
+                        dose = "30 mg by mouth twice daily.";
                     } else if (ageYears >= 12) {
-                        dose = "60 mg twice daily.";
+                        dose = "60 mg by mouth twice daily.";
                     } else {
                         dose = "Detailed dosing not available for this combination of inputs.";
                     }
                     break;
 
                 case "guaifenesin":
-                    if (ageYears >= 4 && ageYears < 6) dose = "50-100 mg every 4 hours (max 6 doses/day).";
-                    else if (ageYears >= 6 && ageYears < 12) dose = "100-200 mg every 4 hours (max 6 doses/day).";
-                    else if (ageYears >= 12) dose = "200-400 mg every 4 hours (max 6 doses/day).";
+                    if (ageYears >= 4 && ageYears < 6) dose = "50-100 mg by mouth every 4 hours as needed. <br><b><span style=\"color: red;\">Max 6 doses/day";
+                    else if (ageYears >= 6 && ageYears < 12) dose = "100-200 mg by mouth every 4 hours as needed. <br><b><span style=\"color: red;\">Max 6 doses/day";
+                    else if (ageYears >= 12) dose = "200-400 mg by mouth every 4 hours as needed. <br><b><span style=\"color: red;\"> Max 6 doses/day";
                     else dose = "Not recommended for children under 4 years.";
                     break;
                 case "hydrocortisone":
                     if (ageYears <2) dose = "Hydrocortisone cream is not indicated for children under 2 years old, consult a doctor before use.";
-                    else if (ageYears >= 2) dose = "Apply a thin layer to the affected area(s) 3-4 times daily, <b> do not use longer than 2 weeks."; 
+                    else if (ageYears >= 2) dose = "Apply a thin layer to the affected area(s) 3-4 times daily. <br><b><span style=\"color: red;\"> Do not use longer than 2 weeks."; 
                     break;
+
+                case "loperamide":
+                    if (ageYears < 2) dose = "Loperamide is not indicated for children under 2 years old.";
+                    else if (ageYears >=2 && ageYears < 12 && weightKg >13 && weightKg <21) dose = "1 mg with 1st loose stool followed by 1 mg/dose after each subsequent loose stool.<br><b><span style=\"color: red;\"> Max daily dose 3 mg/day.";
+                    else if (ageYears >=2 && ageYears < 12 && weightKg >21.1 && weightKg <27) dose = "1 mg with 1st loose stool followed by 1 mg/dose after each subsequent loose stool. <br><b><span style=\"color: red;\"> Max daily dose 4 mg/day.";
+                    else if (ageYears >=2 && ageYears < 12 && weightKg >=27 && weightKg <43) dose = "2 mg with 1st loose stool followed by 1 mg/dose after each subsequent loose stool. <br><b><span style=\"color: red;\"> Max daily dose 6 mg/day.";
+                    else if (ageYears >=12) dose = "4 mg with 1st loose stool followed by 2 mg/dose after each subsequent loose stool. <br><b><span style=\"color: red;\"> Max daily dose 8 mg/day.";
+                    break; 
 
                 case "loratadine":
                     if (ageYears < 2) dose = "Loratadine is not indicated for children under 2 years old.";
-                    else if (ageYears >=2 && ageYears < 6) dose = "5mg once daily.";
-                    else if (ageYears > 6) dose = "10mg once daily.";
+                    else if (ageYears >=2 && ageYears < 6) dose = "5 mg by mouth once daily.";
+                    else if (ageYears > 6) dose = "10 mg by mouth once daily.";
                     break; 
 
                 case "ibuprofen":
@@ -470,30 +631,37 @@
                     else if (ageYears > 0.5) {
                         let minDose = weightKg * 4;  // Minimum dose (4 mg/kg)
                         let maxDose = weightKg * 10; // Maximum dose (10 mg/kg)
-                        dose = `${minDose.toFixed(1)} mg - ${maxDose.toFixed(1)} mg per dose (4-10mg/kg/dose) every 6-8 hours.`;
+                        dose = `${minDose.toFixed(1)} mg - ${maxDose.toFixed(1)} mg per dose (4-10 mg/kg/dose) every 6-8 hours as needed.`;
                     }
                     break;
-
-
+                 case "meclizine":
+                    if (ageYears < 12) dose = "Meclizine is not indicated for children under 12 years old.";
+                    else if (ageYears >=12) dose = "<br>For motion sickness: 25-50 mg by mouth 60 minutes before travel. <br> For vertigo: 25-100 mg/day by mouth in 3 or 4 divided doses.";
+                    break; 
                 case "melatonin":
                     if (ageYears < 5) dose = "Melatonin is not indicated for children under 5 years old.";
-                    else if (ageYears >=5) dose = "1-3mg once daily.";
+                    else if (ageYears >=5) dose = "1-3 mg by mouth once daily before bedtime.";
                     break; 
                 case "naproxen":
                     if (ageYears < 12) {
                         dose = "Naproxen is not indicated for children under 12 years old.";
                     } else if (ageYears >= 12) {
-                        dose = "200 mg every 8-12 hours as needed. Max daily dose of 600mg/day.";
+                        dose = "200 mg by mouth every 8-12 hours as needed.<br><b><span style=\"color: red;\"> Max daily dose of 600mg/day.";
                     }
                     break;
                 case "peg":
                     if (ageYears >0) {
                         let minDose = weightKg * 0.4;  // Minimum dose (10 mg/kg)
                         let maxDose = weightKg * 0.8; // Maximum dose (15 mg/kg)
-                            dose = `${minDose.toFixed(1)} g - ${maxDose.toFixed(1)} g (0.4-0.8g/kg) once daily as needed.<br><b> <span style="color: red;"> Not approved for ages <17, consult a doctor prior to use. Max daily dose of 17g.`; 
+                            dose = `${minDose.toFixed(1)} g - ${maxDose.toFixed(1)} g (0.4-0.8g/kg) by mouth once daily as needed.<br><b> <span style="color: red;"> Not approved for ages <17, consult a doctor prior to use. <br><b><span style=\"color: red;\">Max daily dose of 17g`; 
                     }
                     break;
-
+                case "sudafed":
+                    if (ageYears >= 4 && ageYears < 6) dose = "15 mg by mouth every 4-6 hours as needed. <br><b><span style=\"color: red;\"> Max 60mg/day";
+                    else if (ageYears >= 6 && ageYears < 12) dose = "30 mg by mouth every 4-6 hours as needed. <br><b><span style=\"color: red;\"> Max 120 mg/day";
+                    else if (ageYears >= 12) dose = "60 mg by mouth every 4-6 hours as needed. <br><b><span style=\"color: red;\"> Max 240 mg/day";
+                    else dose = "Not recommended for children under 4 years.";
+                    break;
 
 
 
@@ -502,15 +670,15 @@
                     break;
                  case "simethicone":
                     if (ageYears < 2 || weightKg <= 10.9) {
-                        dose = "20mg four times a day as needed.";
+                        dose = "20 mg by mouth four times a day as needed.";
                     } else if (ageYears < 12 && weightKg > 10.9) {
-                        dose = "40mg four times a day as needed.";
+                        dose = "40 mg by mouth four times a day as needed.";
                     } else if (ageYears >= 12) {
-                        dose = "40-125mg four times a day as needed.";
+                        dose = "40-125 mg by mouth four times a day as needed.";
                     }
                     break;
                 case "vitamin_d":
-                    dose = "For Breastfed infants = 400 units (10mcg), For Children Without Adequate Intake = 600 units (15mcg).";
+                    dose = "For Breastfed infants = 400 units (10mcg) by mouth once daily, For Children Without Adequate Intake = 600 units (15mcg) by mouth once daily.";
                     break;
 
 
@@ -521,7 +689,6 @@
 
 
             document.getElementById("doseResult").innerHTML = `
-                <b>Medication:</b> ${medication.replaceAll("_", " ")} <br>
                 ${weight ? `<b>Weight:</b> ${weight} lbs (${weightKg} kg)` : ""} <br>
                 ${age ? `<b>Age:</b> ${ageYears} years` : ""} <br>
                 <b>Recommended Dose:</b> ${dose}
@@ -533,6 +700,37 @@
             const medication = document.getElementById("drugSummary").value;
             const summary = drugData[medication]?.summary || "Please select a medication.";
             document.getElementById("drugSummaryResult").innerHTML = summary;
+        }
+        // Symptom-Based Medication Data
+        const symptomMedications = {
+            fever: ["Acetaminophen (Tylenol),", "Ibuprofen (Advil/Motrin)"],
+            dcough: ["Dextromethorphan (Delsym),", "Cough Drops/Lozenges", "<br><b>**Child must be 4+ to take cough/cold products"],
+            wcough: ["Guaifenesin (Mucinex),", "Cough Drops/Lozenges", "<br><b>**Child must be 4+ to take cough/cold products"],
+            allergies: ["<b> First line: </b> Cetirizine (Zyrtec),", "Fexofenadine (Allegra),", "Loratadine (Claritin)", "<br><b> Second Line: </b> Diphenhydramine (Benadryl), Chlorpheniramine (Chlorphen)"],
+            constipation: ["<b> First line: </b> Polyethylene Glycol 3350 (Miralax),","<br><b> Second Line: </b> Bisacodyl (Dulcolax)"],
+            pain: ["Acetaminophen (Tylenol),", "Ibuprofen (Advil/Motrin),", "Naproxen (Aleve)"],
+            insomnia:["<b> First line: </b> Manage Coexisting Conditions, Behavioral Strategies","<br><b> Second Line: </b> Melatonin"],
+            inflammation: ["Ibuprofen (Advil/Motrin), Naproxen (Aleve)"],
+            heartburn: ["Calcium Carbonate (Tums)"],
+            stomachupset: ["Bismuth Subsalicylate (Pepto Bismol), Simethicone (Mylicon, Gas-x)"],
+            congestion: ["Saline Nasal Drops/Spray (Little Remedies/Ayr), Pseudoephedrine (Sudafed) <br><b>**Child must be 4+ to take pseudoephedrine, saline drops are safe for all ages"],
+            motion: ["Dimenhydrinate (Dramamine), Meclizine (Bonine)"],
+            itching: ["Hydrocortsone cream (Cortizone), Diphenhydramine cream (Benadryl Anti-Itch)"],
+            diarrhea: ["Loperamide (Imodium)"],
+        };
+
+        // Function to Display Medications for Selected Symptom
+        function showSymptomMeds() {
+            let symptom = document.getElementById("symptomSearch").value;
+            let resultDiv = document.getElementById("symptomResult");
+
+            if (symptom && symptomMedications[symptom]) {
+                resultDiv.innerHTML = `
+                    <b>Recommended Medication(s):</b> <br> ${symptomMedications[symptom].join(" ")}
+                `;
+            } else {
+                resultDiv.innerHTML = "";
+            }
         }
     </script>
 </body>
